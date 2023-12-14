@@ -3,10 +3,10 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"os"
 	"regexp"
 	"strconv"
 	"strings"
-	"os"
 )
 
 func is_num(word string) bool {
@@ -14,37 +14,37 @@ func is_num(word string) bool {
 }
 
 func calc(str string) int {
-	    var i int
-	    for i = 0; i < len(str); i++ {
-	        if !is_num(string(str[i])) {
-	            break
-	        }
-	    }
-	    switch string(str[i]) {
-	    case "x":
-	        x, _  := strconv.Atoi(str[0:i])
-	        y, _ := strconv.Atoi(str[(i + 1):len(str)])
-	        return x * y
-	    case "*":
-	        x, _ := strconv.Atoi(str[0:i])
-	        y, _ := strconv.Atoi(str[(i + 1):len(str)])
-	        return x * y
-	    case "+":
-	        x, _ := strconv.Atoi(str[0:i])
-	        y, _ := strconv.Atoi(str[(i + 1):len(str)])
-	        return x + y
-	    case "-":
-	        x, _ := strconv.Atoi(str[0:i])
-	        y, _ := strconv.Atoi(str[(i + 1):len(str)])
-	        return x - y
-	    case "/":
-	        x, _ := strconv.Atoi(str[0:i])
-	        y, _ := strconv.Atoi(str[(i + 1):len(str)])
-	        return x / y
-	    default:
-	        return 0
-	    }
+	var i int
+	for i = 0; i < len(str); i++ {
+		if !is_num(string(str[i])) {
+			break
+		}
 	}
+	switch string(str[i]) {
+	case "x":
+		x, _ := strconv.Atoi(str[0:i])
+		y, _ := strconv.Atoi(str[(i + 1):len(str)])
+		return x * y
+	case "*":
+		x, _ := strconv.Atoi(str[0:i])
+		y, _ := strconv.Atoi(str[(i + 1):len(str)])
+		return x * y
+	case "+":
+		x, _ := strconv.Atoi(str[0:i])
+		y, _ := strconv.Atoi(str[(i + 1):len(str)])
+		return x + y
+	case "-":
+		x, _ := strconv.Atoi(str[0:i])
+		y, _ := strconv.Atoi(str[(i + 1):len(str)])
+		return x - y
+	case "/":
+		x, _ := strconv.Atoi(str[0:i])
+		y, _ := strconv.Atoi(str[(i + 1):len(str)])
+		return x / y
+	default:
+		return 0
+	}
+}
 
 func getUserInput() string {
 	reader := bufio.NewReader(os.Stdin)
